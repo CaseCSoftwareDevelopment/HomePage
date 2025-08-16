@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div id="fixed-back-button">
+  <a href="Homepage.html">← Home</a>
+</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Case C Software Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-dark: #0A2D57;
+            --ocean-medium: #1A4B8C;
+            --sand-light: #E6C37E;
+            --neon-accent: #3FFF00;
+            --text-light: #FFFFFF;
+            --text-dark: #0A2D57;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', sans-serif;
+            background: linear-gradient(rgba(10, 45, 87, 0.9), rgba(10, 45, 87, 0.95)), 
+                        url('ocean-bg.jpg') center/cover fixed;
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: var(--sand-light);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(230, 195, 126, 0.5);
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--sand-light);
+        }
+        
+        input, textarea {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-accent);
+            box-shadow: 0 0 0 2px rgba(63, 255, 0, 0.3);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--neon-accent);
+            color: var(--ocean-dark);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: #2FE000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(63, 255, 0, 0.3);
+        }
+        
+        .success-message {
+            display: none;
+            background: rgba(63, 255, 0, 0.2);
+            border: 1px solid var(--neon-accent);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Form validation */
+        input:invalid, textarea:invalid {
+            border-color: #FF6B6B;
+        }
+        
+        input:valid, textarea:valid {
+            border-color: #3FFF00;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-button-container">
+  <a href="Homepage.html" class="back-button">
+    <span class="back-arrow">←</span>
+    <span class="back-text">Home</span>
+  </a>
+</div>
+    <div class="container">
+        <h1>Contact Us</h1>
+        
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required minlength="2">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" required minlength="10"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+            
+            <div class="success-message" id="successMessage">
+                Thank you! Your message has been sent. We'll contact you soon.
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

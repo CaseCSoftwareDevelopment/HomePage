@@ -1,0 +1,71 @@
+:root {
+    --color-primary: #464946;
+    --color-secondary: #555D50;
+    --color-accent: #0031E0;
+    --color-background: #181A18;
+    --color-text: #39FF14;
+    --color-link: #c678DD;
+    --font-body: "Noto Sans", Georgia, serif;
+}
+        .menu-button .line-2 {
+            opacity: 0;
+        }
+        
+        .menu-button.active .line-3 {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Styling for the sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            width: 250px;
+            height: 100%;
+            background-color: var(--color-primary);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar.active {
+            left: 0; /* Show the sidebar */
+        }
+
+        .sidebar h2 {
+            color: var(--color-background);
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: var(--color-background);
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--color-secondary);
+        }
+
+        :root {
+  --services-color: #0A2D57;       /* Default */
+  --services-hover-color: hsl(105, 100%, 45%); /* Hover */
+}
+
+#services-card:hover {
+  color: #3FFF00;
+  text-shadow: 0 0 8px rgba(63, 255, 0, 0.7); /* Glow effect */
+  transform: translateY(-3px); /* Float effect */
+}

@@ -1,0 +1,504 @@
+/*
+This is where the CSS from the other file would go if you didn't want
+a separate CSS file. It's a good practice to keep them separate,
+but for a single page, you can use this method.
+*/
+:root {
+    --color-primary: #b8d8e3;
+    --color-secondary: #d4af37;
+    --color-accent: #D4AF37;
+    --color-background: #0A2D57;
+    --color-text: #181A18;
+    --font-body: "Noto Sans", Georgia, serif;
+    --about-color: #0A2D57;
+    --contact-color: #0A2D57;
+}
+
+
+
+#about-card .card-content * {
+  color: var(--about-color);
+}
+
+
+      body {
+  background: 
+    linear-gradient(rgba(10, 45, 87, 0.8), rgba(10, 45, 87, 0.9)), /* Blue overlay */
+    url('../images/ocean-bg.jpg') center/cover no-repeat fixed !important;
+  color: white; /* Default text color */
+}
+
+
+
+
+        /* Styling for the menu button */
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button:hover {
+            transform: scale(1.1);
+            background-color: #0c3a6b;
+        }
+
+        .menu-button .line-1,
+        .menu-button .line-2,
+        .menu-button .line-3 {
+            width: 28px;
+            height: 3px;
+            background-color: var(--color-background);
+            border-radius: 5px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Active state for the menu button */
+        .menu-button.active .line-1 {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-button.active .line-2 {
+            opacity: 0;
+        }
+
+        .menu-button.active .line-3 {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Start off-screen */
+            width: 250px;
+            height: 100%;
+            background-color: var(--color-primary);
+            padding-top: 60px;
+            box-shadow: 2px 0 10px #D4AF37;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: var(--color-background);
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #B8D8E3;
+        }
+
+        /* Main content styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.pushed {
+            margin-left: 250px;
+        }
+
+        /* Section styling */
+        section {
+            padding: 40px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+            }
+            .main-content.pushed {
+                margin-left: 250px;
+            }
+        }
+/* Card Container */
+.card-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* Individual Cards */
+.card {
+  flex: 1 1 300px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== Clean Image Hover Fix ===== */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: inherit; /* Match parent's rounded corners */
+  overflow: hidden; /* Contain the image */
+  z-index: 1; /* Layer above card background */
+}
+
+.card-content {
+  position: relative; 
+  z-index: 2; /* Keep text above image */
+  background: rgba(255,255,255,0.9); /* Solid light bg for readability */
+}
+
+.card:hover .card-image {
+  opacity: 0.3;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.1); /* Optional: Darken overlay */
+}
+
+/* Unique Images for Each Card */
+#about-card .card-image {
+  background-image: url('about-image.jpg');
+}
+
+/* Image for Services Card */
+/* ===== Individual Card Images ===== */
+#about-card .card-image {
+  background-image: url("../images/about-image.jpg"); /* About Us image */
+}
+
+#services-card .card-image {
+  background-image: url("../images/services-image.jpg"); /* Services image */
+}
+
+#contact-card .card-image {
+  background-image: url("/images/contact-image.jpg");
+}
+
+/* Shared styles for all card images */
+.card-image {
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-image {
+  opacity: 0.3; /* Semi-transparent on hover */
+}
+
+#contact-card .card-image {
+  background-image: url('contact-image.jpg');
+}
+
+/* HomepageColours.css */
+.services-section {
+  color: var(--services-color); /* Default color from coding.css */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+.services-section:hover {
+  color: var(--services-hover-color); /* Hover color from coding.css */
+}
+
+/* ===== Contact Card - Optimized Hover ===== */
+#contact-card .card-image {
+  background-image: url("../images/contact-image.jpg");
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.7); /* Darken image slightly */
+}
+
+#contact-card:hover .card-image {
+  opacity: 0.8 !important; /* Stronger visibility */
+  filter: brightness(0.9); /* Slight glow */
+}
+
+/* ===== Clean Hover Effect ===== */
+.card-content {
+  background: transparent !important; /* Remove default background */
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-content {
+  text-shadow: 0 0 10px rgba(255,255,255,0.8); /* Optional: Text glow */
+}
+
+.card-image {
+  z-index: 1; /* Place image behind text */
+}
+
+.card-content {
+  z-index: 2; /* Keep text always on top */
+  position: relative; /* Required for z-index */
+}
+
+.card-content p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%; /* Optional: Prevent overly wide text */
+}
+
+/* ===== Make Contact Us match About Us ===== */
+#contact-card .card-content h2,
+#contact-card .card-content p {
+  color: #071e3b !important; /* Dark blue to match About Us */
+  transition: color 0.3s ease;
+}
+
+/* Optional: If you want hover effects */
+#contact-card:hover .card-content h2,
+#contact-card:hover .card-content p {
+  color: #0A2D57; /* Keep same color on hover */
+  opacity: 0.9; /* Slight fade instead of color change */
+}
+
+/* Tab Bar Styling */
+/* ===== Beach Sidebar ===== */
+.sidebar {
+  background-color: #E6C37E !important; /* Sand white */
+  background-image: url('../images/sand-texture.jpg'); /* Optional texture */
+  background-blend-mode: overlay;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Links */
+.sidebar a {
+  color: #0A2D57 !important; /* Dark blue text */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Wave-like lines */
+}
+
+/* Hover Effect */
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Foam glow */
+}
+
+/* ===== Sidebar Text ===== */
+.sidebar a {
+  color: #0A2D57 !important; /* Dark blue text */
+  font-weight: 600; /* Medium bold */
+  transition: all 0.3s ease;
+}
+
+/* Hover/Active States */
+.sidebar a:hover,
+.sidebar a:focus {
+  color: #0A2D57 !important; 
+  background-color: rgba(255, 255, 255, 0.4) !important; /* Light overlay */
+}
+
+/* Current Page Indicator */
+.sidebar a.active {
+  border-left: 4px solid #0A2D57;
+  background-color: rgba(255, 255, 255, 0.2);
+}  
+
+/* ===== FIXED SERVICES TEXT COLOR ===== */
+#services-card {
+  --services-color: #0A2D57;       /* Dark blue */
+  --services-hover-color: #3FFF00; /* Neon green */
+}
+
+#services-card .card-content h2,
+#services-card .card-content p {
+  color: var(--services-color) !important; /* Override white */
+  transition: color 0.3s ease;
+}
+
+#services-card:hover .card-content h2,
+#services-card:hover .card-content p {
+  color: var(--services-hover-color) !important;
+}
+
+/* ===== CONTACT US HOVER COLOR ===== */
+#contact-card .card-content h2,
+#contact-card .card-content p {
+  color: #0A2D57 !important; /* Default dark blue */
+  transition: color 0.3s ease !important;
+}
+
+#contact-card:hover .card-content h2,
+#contact-card:hover .card-content p {
+  color: Gold !important; /* Gold on Hover */
+  text-shadow: 0 0 8px #d4af37; /* Optional glow */
+}
+
+#services-card:hover .card-content h2,
+#services-card:hover .card-content p,
+#contact-card:hover .card-content h2,
+#contact-card:hover .card-content p {
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.9),
+    0 1px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f5f5f5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.back-button svg {
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  background: #eee;
+  transform: translateX(-2px);
+}
+
+.back-button:hover svg {
+  transform: translateX(-3px);
+}
+
+/* For dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .back-button {
+    background: #333;
+    color: #fff;
+    border-color: #444;
+  }
+  .back-button:hover {
+    background: #444;
+  }
+}
+
+/* ===== Professional Back Button ===== */
+.back-button-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px 8px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0A2D57;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(10, 45, 87, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+.back-arrow {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  background: white;
+  transform: translateX(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover .back-arrow {
+  transform: translateX(-3px);
+}
+
+/* For dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .back-button {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+}
+
+/* Nuclear option - forces visibility */
+.back-button {
+  background: white !important;
+  border: 1px solid #0A2D57 !important;
+  color: #0A2D57 !important;
+  font-size: 16px !important;
+  padding: 10px 15px !important;
+}
+
+/* ===== BULLETPROOF BACK BUTTON ===== */
+#fixed-back-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 9999;
+}
+
+#fixed-back-button a {
+  display: block;
+  padding: 8px 15px;
+  background: white;
+  color: #0A2D57 !important;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 20px;
+  border: 2px solid #0A2D57;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-size: 16px;
+}
+
+#fixed-back-button a:hover {
+  background: #0A2D57;
+  color: white !important;
+}
