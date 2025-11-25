@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Data is stored here. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <!-- Link to the external CSS file. -->
+    <link rel="stylesheet" href="services.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+  window.addEventListener('load', function() {
+    const images = document.querySelectorAll('.card-image');
+    images.forEach(img => {
+      if (!img.style.backgroundImage.includes('url("')) {
+        console.error('Missing image:', img.parentElement.id);
+        
+      }
+    });
+  });
+</script>
+</head>
+<body>
+    <h1>Our Services</h1>
+          <h2>Service 1</h2>
+          <p>Details about Service 1.</p>
+      
