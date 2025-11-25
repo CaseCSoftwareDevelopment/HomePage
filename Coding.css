@@ -16,20 +16,42 @@
         }
 
         /* Styling for the sidebar */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px; /* Hidden by default */
-            width: 250px;
-            height: 100%;
-            background-color: var(--color-primary);
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            box-sizing: border-box;
-            transition: left 0.3s ease;
-            z-index: 999;
-        }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    
+    /* REMOVE background-color completely or make it transparent */
+    background-color: transparent !important;
+    
+    /* Add background image */
+    background-image: url('images/beach.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease;
+    z-index: 999;
+    
+    /* Remove the red border */
+    border: none;
+}
 
+/* Add overlay for better text readability */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Places it behind the content */
+}
         .sidebar.active {
             left: 0; /* Show the sidebar */
         }
@@ -39,29 +61,78 @@
             margin-top: 0;
         }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.sidebar a {
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 15px 0;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
 
-        .sidebar ul li {
-            margin: 15px 0;
-        }
-
-        .sidebar ul li a {
-            color: var(--color-background);
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            color: var(--color-secondary);
-        }
-
+.sidebar a:hover {
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+    transform: translateX(5px);
+}
         :root {
   --services-color: #0A2D57;       /* Default */
   --services-hover-color: hsl(105, 100%, 45%); /* Hover */
+}
+
+/* Add these styles to your existing CSS */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Fix for card images */
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h2 {
+    margin: 0 0 10px 0;
+    color: var(--color-primary);
+}
+
+.card-content p {
+    margin: 0;
+    color: var(--color-secondary);
 }
 
 #services-card:hover {
