@@ -1,0 +1,10 @@
+:root{
+    --services-color: #0A2D57;       /* Default */
+    --services-hover-color: hsl(105, 100%, 45%); /* Hover */
+    --
+}
+body {
+  color: #39FF14; /* replace with your hex code */
+  background-color: #000000; /* replace with your hex code */
+}font-body: "Noto Sans", Georgia, serif;
+
