@@ -1,0 +1,168 @@
+/* Cyberpunk Theme - Black & Fluorescent Green */
+.cyber-theme {
+    background: #000000;
+    color: #39ff14; /* Fluorescent green */
+    font-family: 'Inter', monospace;
+}
+
+.cyber-header {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #39ff14;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+}
+
+.cyber-logo {
+    color: #39ff14;
+    text-shadow: 0 0 10px #39ff14;
+}
+
+.nav-links a {
+    color: #39ff14;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 15px #39ff14;
+}
+
+.cyber-active {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px #39ff14 !important;
+}
+
+.cyber-cta-button {
+    background: #39ff14;
+    color: #000000 !important;
+    text-shadow: none !important;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+}
+
+.cyber-cta-button:hover {
+    background: #ffffff;
+    box-shadow: 0 0 25px #39ff14;
+}
+
+.cyber-menu-button span {
+    background: #39ff14;
+    box-shadow: 0 0 5px #39ff14;
+}
+
+/* Hero Section */
+.cyber-hero {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    border-bottom: 1px solid #39ff14;
+}
+
+.cyber-text {
+    color: #39ff14;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.cyber-glow {
+    color: #39ff14;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+}
+
+.cyber-subtext {
+    color: #b0ff9e;
+}
+
+/* Cards */
+.cyber-card {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid #39ff14;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+    border-color: #ffffff;
+}
+
+.cyber-icon {
+    filter: drop-shadow(0 0 8px #39ff14);
+}
+
+.cyber-features li {
+    color: #b0ff9e;
+    border-left: 2px solid #39ff14;
+}
+
+.cyber-tag {
+    background: rgba(57, 255, 20, 0.1);
+    color: #39ff14;
+    border: 1px solid #39ff14;
+    box-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+}
+
+/* Process Steps */
+.cyber-step {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid #39ff14;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+}
+
+.cyber-number {
+    background: #39ff14;
+    color: #000000;
+    text-shadow: 0 0 5px #39ff14;
+    box-shadow: 0 0 15px #39ff14;
+}
+
+/* CTA Section */
+.cyber-cta {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    border-top: 1px solid #39ff14;
+    border-bottom: 1px solid #39ff14;
+}
+
+.cyber-primary-btn {
+    background: #39ff14;
+    color: #000000;
+    border: none;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+    text-shadow: none;
+}
+
+.cyber-primary-btn:hover {
+    background: #ffffff;
+    box-shadow: 0 0 30px #39ff14;
+    transform: translateY(-2px);
+}
+
+/* Back Button */
+.cyber-back-button {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #39ff14;
+}
+
+.cyber-back-button a {
+    color: #39ff14;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+.cyber-back-button:hover {
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+/* Sections */
+.cyber-section {
+    background: #000000;
+}
+
+.cyber-main {
+    background: #000000;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .nav-links {
+        background: rgba(0, 0, 0, 0.95);
+        border: 1px solid #39ff14;
+        box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+    }
+}
