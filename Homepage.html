@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Data is stored here. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Homepage</title>
-    <!-- Link to the external CSS file. -->
     <link rel="stylesheet" href="Coding.css">
     <link rel="stylesheet" href="HomepageColours.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-  window.addEventListener('load', function() {
-    const images = document.querySelectorAll('.card-image');
-    images.forEach(img => {
-      if (!img.style.backgroundImage.includes('url("')) {
-        console.error('Missing image:', img.parentElement.id);
-        
-      }
-    });
-  });
-</script>
 </head>
 <body>
-      <div id="background-container">
-    <picture>
-      <source srcset="images/ocean-bg.webp" type="image/webp">
-      <source srcset="images/ocean-bg.jpg" type="image/jpeg">
-      <img src="images/ocean-bg.jpg" alt="" role="presentation" loading="eager">
-    </picture>
-  </div>
-  
-  <!-- Rest of your content -->
-  <div class="main-content">
-    ...
-  </div>
+    <div id="background-container">
+        <picture>
+            <source srcset="images/ocean-bg.webp" type="image/webp">
+            <source srcset="images/ocean-bg.jpg" type="image/jpeg">
+            <img src="images/ocean-bg.jpg" alt="" role="presentation" loading="eager">
+        </picture>
+    </div>
 
-    <!-- The button to toggle the menu -->
     <button class="menu-button" id="menu-toggle-button">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
     </button>
 
-    <!-- The sidebar navigation menu -->
     <div class="sidebar" id="sidebar">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -50,106 +30,54 @@
         <a href="#contact">Contact</a>
     </div>
 
-    <!-- The main content area -->
-  <div class="main-content" id="main-content">
-  <h1>Case C Software Development</h1>
-  
-  <!-- Clickable Cards -->
-  <div class="card-container">
-    <!-- About Us Card -->
-    <a href="about.html" class="card" id="about-card">
-      <div class="card-content">
+    <div class="main-content" id="main-content">
+        <h1>Case C Software Development</h1>
+        
+        <div class="card-container">
+        <!-- About Us Card - Simplified -->
+<a href="about.html" class="card" id="about-card">
+    <div class="card-image">
+        <img src="images/About.jpg" alt="About Us">
+    </div>
+    <div class="card-content">
         <h2>About Us</h2>
         <p>Learn more about our mission.</p>
-      </div>
-      <div class="card-image"></div> 
-        <picture class="card-image">
-    <source srcset="images/about-image.webp" type="image/webp">
-    <source srcset="images/about-image.jpg" type="image/jpeg">
-    <img src="images/about-image.jpg" alt="" role="presentation" loading="lazy"> 
-    <!-- Empty alt + role hides from screen readers -->
-  </picture><!-- Image loads here on hover -->
-    </a>
+    </div>
+</a>
 
-    <!-- Services Card -->
-    <a href="services.html" class="card" id="services-card">
-      <div class="card-content">
+<!-- Services Card - Simplified -->
+<a href="services.html" class="card" id="services-card">
+    <div class="card-image">
+        <img src="images/services-image.jpg" alt="Our Services" loading="lazy">
+    </div>
+    <div class="card-content">
         <h2>Our Services</h2>
         <p>Explore what we offer.</p>
-        <img src="images/services-image.jpg" alt="Our Services" class="card-image">
-      </div>
-      <div class="card-image"></div>
-       <picture class="card-image">
-    <source srcset="images/services-image.webp" type="image/webp">
-    <source srcset="images/services-image.jpg" type="image/jpeg">
-    <img src="images/services-image.jpg" alt="" role="presentation" loading="lazy"> 
-    <!-- Empty alt + role hides from screen readers -->
-  </picture>
-    </a>
+    </div>
+</a>
 
-    <!-- Contact Card -->
-    <a href="contact.html" class="card" id="contact-card">
-      <div class="card-content">
+<!-- Contact Card - Simplified -->
+<a href="contact.html" class="card" id="contact-card">
+    <div class="card-image">
+        <img src="images/contact-image.jpg" alt="Contact Us" loading="lazy">
+    </div>
+    <div class="card-content">
         <h2>Contact Us</h2>
         <p>Get in touch.</p>
-      </div>
-      <div class="card-image"></div>
- <picture class="card-image">
-    <source srcset="images/contact-image.webp" type="image/webp">
-    <source srcset="images/contact-image.jpg" type="image/jpeg">
-    <img src="images/contact-image.jpg" alt="" role="presentation" loading="lazy"> 
-    <!-- Empty alt + role hides from screen readers -->
-  </picture>
-    </a>
-  </div>
-</div>
-
-    <!-- The JavaScript to handle the menu toggle and color change -->
+    </div>
+</a>
     <script>
-        // Get references to the HTML elements we need to interact with
+        // Your existing JavaScript remains the same
         const menuToggleButton = document.getElementById('menu-toggle-button');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('main-content');
-        const message = document.getElementById('message');
 
-        // Check if the CSS file exists by trying to access a rule
-        fetch('HomepageColours.css')
-            .then(response => {
-                if (response.status === 404) {
-                    message.textContent = "Error: HomepageColours.css not found. Please make sure the file is in the same folder as this HTML file.";
-                }
-            })
-            .catch(() => {
-                message.textContent = "Error: Could not fetch HomepageColours.css. Check your file path.";
-            });
-
-        // Add a click event listener to the menu button
         menuToggleButton.addEventListener('click', () => {
-            // Toggle the 'active' class on the sidebar
             sidebar.classList.toggle('active');
-            // Toggle the 'active' class on the menu button itself
             menuToggleButton.classList.toggle('active');
-            // Toggle the 'pushed' class on the main content to shift it
             mainContent.classList.toggle('pushed');
         });
 
-        // Add a click event listener to the test button
-        testButton.addEventListener('click', () => {
-            // Get the computed style of the body to check for the CSS variable
-            const bodyStyle = getComputedStyle(document.body);
-            const bgColor = bodyStyle.getPropertyValue('--color-secondary').trim();
-
-            if (bgColor) {
-                // If the CSS variable exists, change the background color
-                document.body.style.backgroundColor = 'var(--color-primary)';
-                message.textContent = "Success! The CSS file is linked correctly.";
-            } else {
-                // If the variable doesn't exist, the CSS is not linked
-                message.textContent = "Error: CSS variables not found. The CSS file might not be linked.";
-            }
-        });
-
-        // Hide the menu when a link inside it is clicked
         const sidebarLinks = sidebar.querySelectorAll('a');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -159,7 +87,23 @@
             });
         });
 
-        // Touch event handlers for swiping
+        // Force apply background image after page loads
+        window.addEventListener('load', function() {
+    const sidebar = document.getElementById('sidebar');
+    
+    // Remove any inline background color
+    sidebar.style.backgroundColor = 'transparent';
+    
+    // Force apply the background image
+    sidebar.style.backgroundImage = "url('images/beach.jpg')";
+    sidebar.style.backgroundSize = 'cover';
+    sidebar.style.backgroundPosition = 'center';
+    sidebar.style.backgroundRepeat = 'no-repeat';
+    
+    console.log('Sidebar background forced:', sidebar.style.backgroundImage);
+        });
+        
+        // Touch event handlers
         let startX = 0;
         document.body.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
@@ -167,22 +111,16 @@
 
         document.body.addEventListener('touchend', (e) => {
             const endX = e.changedTouches[0].clientX;
-            // Check for a left-to-right swipe
             if (endX - startX > 50) {
-                // Open the sidebar
                 sidebar.classList.add('active');
                 menuToggleButton.classList.add('active');
                 mainContent.classList.add('pushed');
-            }
-            // Check for a right-to-left swipe
-            else if (startX - endX > 50 && sidebar.classList.contains('active')) {
-                // Close the sidebar
+            } else if (startX - endX > 50 && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
                 menuToggleButton.classList.remove('active');
                 mainContent.classList.remove('pushed');
             }
         });
     </script>
-    <script src="coding.js"></script>
 </body>
 </html>
