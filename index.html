@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaseC Software Development</title>
+    <link rel="stylesheet" href="Coding.css">
+    <link rel="stylesheet" href="HomepageColours.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="background-container">
+        <picture>
+            <source srcset="images/ocean-bg.webp" type="image/webp">
+            <source srcset="images/ocean-bg.jpg" type="image/jpeg">
+            <img src="images/ocean-bg.jpg" alt="" role="presentation" loading="eager">
+        </picture>
+    </div>
+
+    <!-- Modern Header Navigation -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">CaseC Software Development</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html" class="cta-button">Contact</a>
+            </div>
+            <button class="mobile-menu-button" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforming Ideas into <span class="gradient-text">Digital Solutions</span></h1>
+            <p class="hero-subtitle">Custom software development that drives your business forward with innovative technology and expert craftsmanship</p>
+            <div class="hero-buttons">
+                <a href="services.html" class="btn-primary">Our Services</a>
+                <a href="contact.html" class="btn-secondary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Cards Section -->
+    <section class="services-section">
+        <div class="card-container">
+            <!-- About Us Card -->
+            <a href="about.html" class="card modern-card" id="about-card">
+                <div class="card-image">
+                    <img src="images/About.jpg" alt="About Us">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">👥</div>
+                    <h2>About Us</h2>
+                    <p>Learn more about our mission, values, and the team behind CaseC Software Development.</p>
+                    <span class="card-cta">Learn more →</span>
+                </div>
+            </a>
+
+            <!-- Services Card -->
+            <a href="services.html" class="card modern-card" id="services-card">
+                <div class="card-image">
+                    <img src="images/services-image.jpg" alt="Our Services" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">⚡</div>
+                    <h2>Our Services</h2>
+                    <p>Explore our comprehensive range of software development and digital transformation services.</p>
+                    <span class="card-cta">View services →</span>
+                </div>
+            </a>
+
+            <!-- Contact Card -->
+            <a href="contact.html" class="card modern-card" id="contact-card">
+                <div class="card-image">
+                    <img src="images/contact-image.jpg" alt="Contact Us" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">💬</div>
+                    <h2>Contact Us</h2>
+                    <p>Ready to start your project? Get in touch with our team for a free consultation.</p>
+                    <span class="card-cta">Get in touch →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const navLinksArray = navLinks.querySelectorAll('a');
+        navLinksArray.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
