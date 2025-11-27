@@ -1,505 +1,352 @@
-/*
-This is where the CSS from the other file would go if you didn't want
-a separate CSS file. It's a good practice to keep them separate,
-but for a single page, you can use this method.
-*/
+/* Modern CSS Variables */
 :root {
-    --color-primary: #b8d8e3;
-    --color-secondary: #d4af37;
-    --color-accent: #D4AF37;
-    --color-background: #0A2D57;
-    --color-text: #181A18;
-    --font-body: "Noto Sans", Georgia, serif;
-    --about-color: #0A2D57;
-    --contact-color: #0A2D57;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #000000;
+    --accent: #d4af37;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-
-
-#about-card .card-content * {
-  color: var(--about-color);
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-      body {
-  background: 
-    linear-gradient(rgba(10, 45, 87, 0.8), rgba(10, 45, 87, 0.9)), /* Blue overlay */
-    url('../images/ocean-bg.jpg') center/cover no-repeat fixed !important;
-  color: white; /* Default text color */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    overflow-x: hidden;
+    background-image: url('../images/ocean-bg.jpg');
 }
 
-
-
-
-        /* Styling for the menu button */
-        .menu-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: var(--color-primary);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-button:hover {
-            transform: scale(1.1);
-            background-color: #0c3a6b;
-        }
-
-        .menu-button .line-1,
-        .menu-button .line-2,
-        .menu-button .line-3 {
-            width: 28px;
-            height: 3px;
-            background-color: var(--color-background);
-            border-radius: 5px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        /* Active state for the menu button */
-        .menu-button.active .line-1 {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .menu-button.active .line-2 {
-            opacity: 0;
-        }
-
-        .menu-button.active .line-3 {
-            transform: translateY(-9px) rotate(-45deg);
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -300px; /* Start off-screen */
-            width: 250px;
-            height: 100%;
-            background-color: var(--color-primary);
-            padding-top: 60px;
-            box-shadow: 2px 0 10px #D4AF37;
-            transition: left 0.3s ease;
-            z-index: 999;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .sidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 18px;
-            color: var(--color-background);
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            background-color: #B8D8E3;
-        }
-
-        /* Main content styling */
-        .main-content {
-            flex-grow: 1;
-            padding: 20px;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.pushed {
-            margin-left: 250px;
-        }
-
-        /* Section styling */
-        section {
-            padding: 40px;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            color: var(--color-primary);
-            text-align: center;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 768px) {
-            .main-content {
-                margin-left: 0;
-            }
-            .main-content.pushed {
-                margin-left: 250px;
-            }
-        }
-/* Card Container */
-.card-container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  flex-wrap: wrap;
+/* Glass Header */
+.glass-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    padding: 0.5rem 0;
 }
 
-/* Individual Cards */
-.card {
-  flex: 1 1 300px;
-  min-height: 200px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  text-decoration: none;
-  color: var(--color-text);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== Clean Image Hover Fix ===== */
-.card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-radius: inherit; /* Match parent's rounded corners */
-  overflow: hidden; /* Contain the image */
-  z-index: 1; /* Layer above card background */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }
 
-.card-content {
-  position: relative; 
-  z-index: 2; /* Keep text above image */
-  background: rgba(255,255,255,0.9); /* Solid light bg for readability */
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover .card-image {
-  opacity: 0.3;
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.1); /* Optional: Darken overlay */
+.nav-links a:hover {
+    color: var(--accent);
+    transform: translateY(-1px);
 }
 
-/* Unique Images for Each Card */
-#about-card .card-image {
-  background-image: url('about-image.jpg');
+.cta-button {
+    background: var(--accent);
+    color: var(--dark) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    transition: all 0.3s ease;
 }
 
-/* Image for Services Card */
-/* ===== Individual Card Images ===== */
-#about-card .card-image {
-  background-image: url("../images/about-image.jpg"); /* About Us image */
+.cta-button:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 214, 160, 0.3);
 }
 
-#services-card .card-image {
-  background-image: url("../images/services-image.jpg"); /* Services image */
+/* Mobile Menu */
+.mobile-menu-button {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 4px;
 }
 
-#contact-card .card-image {
-  background-image: url("/images/contact-image.jpg");
+.mobile-menu-button span {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    transition: 0.3s;
+    border-radius: 2px;
 }
 
-/* Shared styles for all card images */
-.card-image {
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    position: relative;
 }
 
-.card:hover .card-image {
-  opacity: 0.3; /* Semi-transparent on hover */
+.hero-content {
+    max-width: 800px;
+    margin-top: 4rem;
 }
 
-#contact-card .card-image {
-  background-image: url('contact-image.jpg');
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
-/* HomepageColours.css */
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Services Section */
 .services-section {
-  color: var(--services-color); /* Default color from coding.css */
-  transition: color 0.3s ease; /* Smooth color change */
+    padding: 6rem 2rem;
+    position: relative;
 }
 
-.services-section:hover {
-  color: var(--services-hover-color); /* Hover color from coding.css */
+.card-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
 }
 
-/* ===== Contact Card - Optimized Hover ===== */
-#contact-card .card-image {
-  background-image: url("../images/contact-image.jpg");
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.3s ease, filter 0.3s ease;
-  filter: brightness(0.7); /* Darken image slightly */
+/* Modern Cards */
+.modern-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
 }
 
-#contact-card:hover .card-image {
-  opacity: 0.8 !important; /* Stronger visibility */
-  filter: brightness(0.9); /* Slight glow */
-}
-
-/* ===== Clean Hover Effect ===== */
-.card-content {
-  background: transparent !important; /* Remove default background */
-  transition: all 0.3s ease;
-}
-
-.card:hover .card-content {
-  text-shadow: 0 0 10px rgba(255,255,255,0.8); /* Optional: Text glow */
+.modern-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
-  z-index: 1; /* Place image behind text */
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.modern-card:hover .card-image img {
+    transform: scale(1.05);
 }
 
 .card-content {
-  z-index: 2; /* Keep text always on top */
-  position: relative; /* Required for z-index */
+    padding: 2rem;
+    position: relative;
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark);
 }
 
 .card-content p {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 80%; /* Optional: Prevent overly wide text */
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
-/* ===== Make Contact Us match About Us ===== */
-#contact-card .card-content h2,
-#contact-card .card-content p {
-  color: #071e3b !important; /* Dark blue to match About Us */
-  transition: color 0.3s ease;
+.card-cta {
+    color: var(--primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Optional: If you want hover effects */
-#contact-card:hover .card-content h2,
-#contact-card:hover .card-content p {
-  color: #0A2D57; /* Keep same color on hover */
-  opacity: 0.9; /* Slight fade instead of color change */
+.modern-card:hover .card-cta {
+    color: var(--secondary);
+    transform: translateX(5px);
 }
 
-/* Tab Bar Styling */
-/* ===== Beach Sidebar ===== */
-.sidebar {
-  background-color: #E6C37E !important; /* Sand white */
-  background-image: url('../images/sand-texture.jpg'); /* Optional texture */
-  background-blend-mode: overlay;
-  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.1);
+/* Background Container */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-/* Tab Links */
-.sidebar a {
-  color: #0A2D57 !important; /* Dark blue text */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Wave-like lines */
+#background-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Hover Effect */
-.sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.4) !important;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Foam glow */
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 200px;
+        text-align: center;
+    }
 }
 
-/* ===== Sidebar Text ===== */
-.sidebar a {
-  color: #0A2D57 !important; /* Dark blue text */
-  font-weight: 600; /* Medium bold */
-  transition: all 0.3s ease;
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .services-section {
+        padding: 4rem 1rem;
+    }
 }
-
-/* Hover/Active States */
-.sidebar a:hover,
-.sidebar a:focus {
-  color: #0A2D57 !important; 
-  background-color: rgba(255, 255, 255, 0.4) !important; /* Light overlay */
-}
-
-/* Current Page Indicator */
-.sidebar a.active {
-  border-left: 4px solid #0A2D57;
-  background-color: rgba(255, 255, 255, 0.2);
-}  
-
-/* ===== FIXED SERVICES TEXT COLOR ===== */
-#services-card {
-  --services-color: #0A2D57;       /* Dark blue */
-  --services-hover-color: #3FFF00; /* Neon green */
-}
-
-#services-card .card-content h2,
-#services-card .card-content p {
-  color: var(--services-color) !important; /* Override white */
-  transition: color 0.3s ease;
-}
-
-#services-card:hover .card-content h2,
-#services-card:hover .card-content p {
-  color: var(--services-hover-color) !important;
-}
-
-/* ===== CONTACT US HOVER COLOR ===== */
-#contact-card .card-content h2,
-#contact-card .card-content p {
-  color: #0A2D57 !important; /* Default dark blue */
-  transition: color 0.3s ease !important;
-}
-
-#contact-card:hover .card-content h2,
-#contact-card:hover .card-content p {
-  color: Gold !important; /* Gold on Hover */
-  text-shadow: 0 0 8px #d4af37; /* Optional glow */
-}
-
-#services-card:hover .card-content h2,
-#services-card:hover .card-content p,
-#contact-card:hover .card-content h2,
-#contact-card:hover .card-content p {
-  text-shadow: 
-    0 1px 4px rgba(0, 0, 0, 0.9),
-    0 1px 8px rgba(0, 0, 0, 0.7) !important;
-}
-
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: #f5f5f5;
-  color: #333;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  margin-bottom: 20px;
-}
-
-.back-button svg {
-  fill: currentColor;
-  transition: transform 0.2s ease;
-}
-
-.back-button:hover {
-  background: #eee;
-  transform: translateX(-2px);
-}
-
-.back-button:hover svg {
-  transform: translateX(-3px);
-}
-
-/* For dark mode compatibility */
-@media (prefers-color-scheme: dark) {
-  .back-button {
-    background: #333;
-    color: #fff;
-    border-color: #444;
-  }
-  .back-button:hover {
-    background: #444;
-  }
-}
-
-/* ===== Professional Back Button ===== */
-.back-button-container {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 100;
-}
-
-.back-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px 8px 8px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #0A2D57;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(10, 45, 87, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-  backdrop-filter: blur(5px);
-}
-
-.back-arrow {
-  font-size: 16px;
-  transition: transform 0.2s ease;
-}
-
-.back-button:hover {
-  background: white;
-  transform: translateX(-2px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-.back-button:hover .back-arrow {
-  transform: translateX(-3px);
-}
-
-/* For dark mode compatibility */
-@media (prefers-color-scheme: dark) {
-  .back-button {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-  }
-}
-
-/* Nuclear option - forces visibility */
-.back-button {
-  background: white !important;
-  border: 1px solid #0A2D57 !important;
-  color: #0A2D57 !important;
-  font-size: 16px !important;
-  padding: 10px 15px !important;
-}
-
-/* ===== BULLETPROOF BACK BUTTON ===== */
-#fixed-back-button {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 9999;
-}
-
-#fixed-back-button a {
-  display: block;
-  padding: 8px 15px;
-  background: white;
-  color: #0A2D57 !important;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 20px;
-  border: 2px solid #0A2D57;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  font-size: 16px;
-}
-
-#fixed-back-button a:hover {
-  background: #0A2D57;
-  color: white !important;
-}
-
