@@ -1,27 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Data is stored here. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services</title>
-    <!-- Link to the external CSS file. -->
-    <link rel="stylesheet" href="services.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-  window.addEventListener('load', function() {
-    const images = document.querySelectorAll('.card-image');
-    images.forEach(img => {
-      if (!img.style.backgroundImage.includes('url("')) {
-        console.error('Missing image:', img.parentElement.id);
+    <title>Our Services - Case C Software Development</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-      }
-    });
-  });
-</script>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #000;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 255, 0, 0.2);
+            border-bottom: 2px solid #39ff14;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #39ff14;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #39ff14;
+            background: rgba(57, 255, 20, 0.1);
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .nav-links a.active {
+            color: #39ff14;
+            background: rgba(57, 255, 20, 0.15);
+            border-bottom: 2px solid #39ff14;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #39ff14;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: rgba(20, 20, 20, 0.9);
+            margin: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid #39ff14;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #39ff14;
+            font-weight: 700;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-weight: 500;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 2.5rem;
+            color: #39ff14;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 2.5rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            border: 1px solid #39ff14;
+            text-align: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(57, 255, 20, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: #39ff14;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .service-card p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li:before {
+            content: "▸";
+            color: #39ff14;
+            position: absolute;
+            left: 0;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .service-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(57, 255, 20, 0.1);
+            color: #39ff14;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #39ff14;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background: rgba(20, 20, 20, 0.5);
+            margin: 2rem 0;
+        }
+
+        .process-section h2 {
+            font-size: 2.5rem;
+            color: #39ff14;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .process-subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid #39ff14;
+            text-align: left;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            color: #39ff14;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            color: #39ff14;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .process-step p {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #39ff14;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: #39ff14;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.1);
+            color: #39ff14;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid #39ff14;
+            text-shadow: 0 0 5px #39ff14;
+        }
+
+        .cta-button:hover {
+            background: rgba(57, 255, 20, 0.2);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            color: #e0e0e0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            border-top: 2px solid #39ff14;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                border-top: 2px solid #39ff14;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+                margin: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Our Services</h1>
-          <h2>Service 1</h2>
-          <p>Details about Service 1.</p>
-      
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Case C</a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Our Services</h1>
+            <p class="hero-subtitle">Our products are specialized in prediction markets and online casinos</p>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="services-section">
+            <h2>What We Offer</h2>
+            <div class="services-grid">
+                <!-- PredictionPicks.Bet -->
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>PredictionPicks.Bet</h3>
+                    <p>Online predictions betting market. We create systems for users to bet on a variety of current events.</p>
+                    <ul class="service-features">
+                        <li>Betting on Current Events</li>
+                        <li>Creating Niches In the Predictions Betting Market</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">HTML/CSS/JS</span>
+                    </div>
+                </div>
+
+                <!-- Camsino.Com -->
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Camsino.Com</h3>
+                    <p>Niche online casino that specializes in unique systems and gambling products</p>
+                    <ul class="service-features">
+                        <li>Niche User Experiences</li>
+                        <li>Creative Engagement Techniques</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span class="tech-tag">C#/Unity</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Backend</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <!-- Custom Software -->
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Custom Software</h3>
+                    <p>Tailored solutions designed to solve your specific business challenges.</p>
+                    <ul class="service-features">
+                        <li>Business Automation</li>
+                        <li>CRM Systems</li>
+                        <li>ERP Solutions</li>
+                        <li>Custom Integrations</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>User-centered design creating intuitive and engaging digital experiences.</p>
+                    <ul class="service-features">
+                        <li>User Research</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Interaction Design</li>
+                        <li>Design Systems</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span class="tech-tag">Drawnote</span>
+                        <span class="tech-tag">Adobe XD</span>
+                        <span class="tech-tag">CSS/TailwindCSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <h2>Our Development Process</h2>
+                <p class="process-subtitle">Simple yet effective steps to develop software</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Discovery & Planning</h3>
+                        <p>Defining the mission and conducting market research is key in starting development. Once we decide to pursue development, we plan accordingly to achieve our goals.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>Design & Prototyping</h3>
+                        <p>We design our products at a full-stack level. From start to finish, we start with the frameworks of our products.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>Development</h3>
+                        <p>Once we have our product's foundation, we establish our niches and final user interfaces and user experiences.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h3>Testing & Quality Assurance</h3>
+                        <p>Security is key for maintaining safe and effective software. We test for security issues, general use and quality assurance.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">05</div>
+                        <h3>Deployment & Launch</h3>
+                        <p>Once we have developed and tested our products, we launch our products for an initial release.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">06</div>
+                        <h3>Support & Maintenance</h3>
+                        <p>We aim to constantly support ours and our customer's products.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's discuss how we can bring your ideas to life with cutting-edge technology solutions.</p>
+                <a href="contact.html" class="cta-button">Get Free Consultation</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <section class="footer">
+        <p>&copy; 2024 Case C Software Development. All rights reserved.</p>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
