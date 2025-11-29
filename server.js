@@ -1,4 +1,5 @@
 // server.js
+console.log('=== DEBUG: Running server.js ===');
 import express from 'express';
 import pkg from 'pg';
 const { Pool } = pkg;
@@ -7,8 +8,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+console.log('Environment variables:', {
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME
+});
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
@@ -16,11 +23,11 @@ app.use(express.json());
 
 // PostgreSQL connection setup
 const pool = new Pool({
-  user: process.env.DB_USER || 'your_username',
-  host: process.env.DB_HOST || 'localhost',
-  database: process.env.DB_NAME || 'your_database',
-  password: process.env.DB_PASSWORD || 'your_password',
-  port: process.env.DB_PORT || 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 // Test database connection
