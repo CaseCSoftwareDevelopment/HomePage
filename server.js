@@ -5,6 +5,7 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import cors from 'cors';
 import dotenv from 'dotenv';
+import contactRoutes from './routes/contact.js';
 
 dotenv.config();
 
@@ -16,6 +17,11 @@ console.log('Environment variables:', {
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.use(cors({
+  origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
+  credentials: true
+}));
 
 // Middleware
 app.use(cors());
@@ -91,3 +97,5 @@ app.post('/api/users', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+app.use('/api/contact', contactRoutes);
