@@ -1,17 +1,14 @@
 // server.js
-const http = require('http');
+import express from 'express';
+import pkg from 'pg';
+const { Pool } = pkg;
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello from Node.js!');
-});
+dotenv.config();
 
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-require('dotenv').config();
-
-
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -86,21 +83,4 @@ app.post('/api/users', async (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-});
-
-import express from 'express';
-import cors from 'cors';
-import contactRoutes from './routes/contact.js';
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(cors());
-app.use(express.json());
-
-// Routes
-app.use('/api/contact', contactRoutes);
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
