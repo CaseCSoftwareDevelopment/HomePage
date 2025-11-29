@@ -305,20 +305,37 @@
     </section>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate form submission
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                this.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 5000);
-            }, 1000);
-        });
+ document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Form submitted!'); // Simple test
+    
+    // Rest of your API code...
+    const formData = new FormData(this);
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+    };
+
+    fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        alert('Success! Message saved.');
+        document.getElementById('successMessage').style.display = 'block';
+        this.reset();
+    })
+    .catch(error => {
+        alert('Error: ' + error);
+    });
+
+    console.log('Form data:', data);
+console.log('Sending to:', 'http://localhost:3001/api/contact');
+
+});
 
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
