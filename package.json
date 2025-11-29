@@ -1,0 +1,11 @@
+{
+  "name": "business-website",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.0",
+    "pg": "^8.8.0",
+    "nodemailer": "^6.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0"
+  }
+}
