@@ -6,6 +6,8 @@ const { Pool } = pkg;
 import cors from 'cors';
 import dotenv from 'dotenv';
 import contactRoutes from './routes/contact.js';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
 
 dotenv.config();
 
@@ -18,13 +20,39 @@ console.log('Environment variables:', {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Trust proxy for rate limiting
+app.set('trust proxy', 1);
+
+// Security middleware
+app.use(helmet());
+
+// Rate limiting - 5 requests per 15 minutes
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 requests per windowMs
+  message: {
+    success: false,
+    message: 'Too many contact form submissions, please try again later.'
+  },
+  // Debug handler
+  handler: (req, res) => {
+    console.log('🚨 RATE LIMIT TRIGGERED for IP:', req.ip);
+    res.status(429).json({
+      success: false,
+      message: 'Too many contact form submissions, please try again later.'
+    });
+  }
+});
+
+app.use('/api/contact', contactLimiter);
+
+// CORS middleware
 app.use(cors({
   origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
   credentials: true
 }));
 
-// Middleware
-app.use(cors());
+// Body parsing middleware
 app.use(express.json());
 
 // PostgreSQL connection setup
@@ -93,9 +121,18 @@ app.post('/api/users', async (req, res) => {
   }
 });
 
+// Contact routes
+app.use('/api/contact', contactRoutes);
+
+// Test rate limit route
+app.get('/api/test-rate-limit', contactLimiter, (req, res) => {
+  res.json({ message: 'This route is rate limited' });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-app.use('/api/contact', contactRoutes);
+console.log('SendGrid API Key present:', !!process.env.SENDGRID_API_KEY);
+console.log('SendGrid API Key starts with SG:', process.env.SENDGRID_API_KEY?.startsWith('SG.'));
