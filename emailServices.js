@@ -4,8 +4,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const sendContactNotification = async (contactData) => {
   const msg = {
-    to: 'dyloncaissie97@gmail.com', // Your actual Gmail address
-    from: 'dyloncaissie97@gmail.com', // Use the same email for now
+from: 'dyloncaissie97@gmail.com', // This gets verified
+to: 'dyloncaissie97@gmail.com', // Your real email to receive notifications
     subject: 'New Contact Form Submission - CaseC Website',
     html: `
       <h2>New Contact Form Submission</h2>
