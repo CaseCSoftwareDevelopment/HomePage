@@ -298,15 +298,63 @@ body {
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                    url('images/beach.jpg');
+        background-size: cover;
+        background-position: center 25%; /* Changed from 30% to 25% to show less bottom */
+        background-repeat: no-repeat;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         flex-direction: column;
         padding: 2rem;
         gap: 1rem;
+        height: auto;
+        max-height: 80vh;
+        overflow-y: auto;
     }
 
     .nav-links.active {
         display: flex;
+    }
+
+    .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 1.1rem;
+    }
+
+    .nav-links a:hover {
+        color: var(--accent);
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links .cta-button {
+        background: var(--accent);
+        color: var(--dark) !important;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-shadow: none;
+        margin-top: 1rem;
+        border: 2px solid var(--accent);
+        font-size: 1.1rem;
+    }
+
+    .nav-links .cta-button:hover {
+        background: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
     }
 
     .mobile-menu-button {
@@ -335,8 +383,8 @@ body {
         width: 200px;
         text-align: center;
     }
+    
 }
-
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
